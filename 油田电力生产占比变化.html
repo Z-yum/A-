@@ -1,0 +1,154 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=bar-y-category&code=PYBwLglsB2AEC8sDeBYAULWkwBsCmAXMuppmHgB5hEDkgnTaAMroKyug2UqD4roOVygBsqAr1oBvKgNGVYACgBMABgCMAFgC0E0QFYAlDQA0JUgHotAZwCuAI3JVagf78mgODk6TXoE_tHus2Z8AM2qwaAYzzRyAJxpNAF8NDCxgYBxIECJUcLJ_CABzZLx_WgBDCghdJwTYbNyABWAIP3S451IwAE8QQk9dAAtMgBNgAHd80lIcTMM8HCqC3pauojB_fTww3t7XYH8AW0ywAKJXfWgvSBhhEEz_TOXdZWJR-f88MH1_OEPj04A6ADdMnBnYAGpPAFIaABuaq9YIg2BggqhaqLFZrDawLY7PbQA5HE5nC7zWD4MCwa4GaIIWCPDEAbXEAF1ntATngfp4ADyGfxaAB8QPBpJesIAopkvM1hBByMsEGysdj8XhCXjvogAAYAEiQIrwy2eq38AGt0sFYCq1RrdOkIDKAHJ04JEFXC0VvD5fABUsEk4nEymeYGAADEIBQ8G1hJJlME_szWWyFcDLsFlDHsddbvdpbKE6RIZhoeF8GloG0Rr02mtMkQyTQLLx1J4bFW1BWmIA8jUA_qmAaNjAP1KNEpcxqoCIAGZxCEe8kkgXJS48O5aP2AT3MElks0PDRpHPqoZgOtgMsZ-uCl4YGBMuUADIDIaTaZ4YeaCgAQRyukLNXqjRo70-eB6pCKunPgzDBOpCwqs6yVJ4SCfjMYZBFC86wMs5REOICGrBQRBuqhG7ANsxb-LUADimSxLAFJqLA4jPFIlK3uEtSPrkL5kG-tBeGseDJEstQ_pgxbHmWNASDIAB-wkAGzVkJUjiWJUgABxScJ8lyZIACcSlSGpckSJpEg6ZIemSDpoh6aIOn9np_Y6dIenSDpihdghf4AZewGYOUASfih1SZhCPYmkkMpltU8TYrSyzvpWjgISxDS0IYRy8aQujHl42q0N6x44MlfElmWVFSBRhWSMV1H9mV4iKJV8llW6dXVZRzySAA7GVoj9tSqwgMIrzirAfUulhyixbARoAMp1PgzHzIeOBLLQADEADC4gACLiWpjngtm2L9IBM1jM0ExYNeo2YCAwC6CKUDQLQ5TXW037nYiSxgQiNBIF4sE7b5CFhfMEXvrWMXgnU8WeIlgSjalAoZZ4WUfLlsD8aWZFUWpallZj2NtU1W3Y6I2OoU18mNVR8kVU1LUtV1JG9f1g2uu6I3ghNU2NAD2JzQtniLT64jLaI96mTto37W5XPzOMnRXjML2XddKL3dAj3PeCmCgfCEGfd9AK_fBoXgkD5hNm2najeD744OU6uXKjBXUaVTVFS7VOFeT1G1U19U-57rXtZ1mr0318ASkzw0w7UyybkB3gQP4Xj4MjujR7H40QAAXo0tVs6Kk21NN7mkDzGR88tij3tIy3LXB2K7fMNvQHgBdF1LvSdBAbRgM0A5i-CEtAe3KXHbLp3yxrJJXTdMC0Iuy7I5rb3a2Xus_bGvmaLRaDBICQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '油田电力生产占比变化 (2014-2025)',
+    //subtext: '绿电与油电占比对比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow',
+      label: {
+        show: true,
+        formatter: function(params) {
+          return params.value + '%';
+        }
+      }
+    },
+    formatter: function(params) {
+      let result = params[0].name + '<br/>';
+      params.forEach(item => {
+        result += `${item.marker} ${item.seriesName}: ${(item.value * 100).toFixed(1)}%<br/>`;
+      });
+      return result;
+    }
+  },
+  legend: {
+    data: ['绿电占比', '油电占比','绿电增长趋势'],
+    top: 30
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value}%'
+    },
+    min: 0,
+    max: 100,
+    boundaryGap: [0, 0.01]
+  },
+  yAxis: {
+    type: 'category',
+    data: ['2014~2016', '2016~2018', '2018~2019', '2019~2020', '2020~2021', '2021~2022', '2022~2023', '2023~2024', '2024~2025'],
+    axisLabel: {
+      interval: 0
+    }
+  },
+  series: [
+    {
+      name: '绿电占比',
+      type: 'bar',
+      stack: 'total',
+      data: [0.01, 0.01, 0.03, 0.05, 0.08, 0.10, 0.15, 0.17, 0.23].map(v => v * 100),
+      itemStyle: {
+        color: '#C0D695'
+      },
+      label: {
+        show: true,
+        position: 'inside',
+        formatter: '{c}%'
+      }
+    },
+    {
+      name: '油电占比',
+      type: 'bar',
+      stack: 'total',
+      data: [0.99, 0.99, 0.97, 0.95, 0.92, 0.90, 0.85, 0.83, 0.77].map(v => v * 100),
+      itemStyle: {
+        color: '#F0C2A2'
+      },
+      label: {
+        show: true,
+        position: 'inside',
+        formatter: '{c}%'
+      }
+    },
+    {
+      name: '绿电增长趋势',
+      type: 'line',
+      data: [0.01, 0.01, 0.03, 0.05, 0.08, 0.10, 0.15, 0.17, 0.23].map(v => v * 100),
+      symbol: 'circle',
+      symbolSize: 8,
+      itemStyle: {
+        color: '#C5A4CC'
+      },
+      lineStyle: {
+        width: 3
+      },
+      label: {
+        show: true,
+        position: 'right',
+        formatter: '{c}%'
+      }
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

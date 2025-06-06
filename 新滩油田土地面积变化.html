@@ -1,0 +1,314 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=mix-zoom-on-value&code=LYTwwgFghgTgLgOgM4QPYHcAyqoBMCWAdgOYAUAlANwCwAUHUgKZwAq-wjqArnKQGZdCAYzj5UhAAQUJAbzoSFE0JFiII-XI2x4iZKvMUGFAemMTAY4qBwTUAOpoDtjIxIBusCSEawkEgLwSA2gHIARgBOYIB2fwAaCX8AJgAGeMComIT4gDYUuKTk6OzAzIBdGlpFJxdcKDgob1kHMv9ATptABldAfztABnVAI3TAe89_AC4_MIAWAFYEAA4AZmjx-OCESeCZ8fGJoejg9NXYpYlA-KGwhGHCyPrFfw7AK8DANkdAPI1Af1TAcOd-v3iZhBHokIRY6J2JtEhvFPqdzgoms1AAbKgApXHqvXwJGbrPbpd6o9EFeJg0plC4dHqAFesEbFjt8QSjAuNvulPt8xkMcXiLoAAfUAi8qAOBUCb0Br4wrExlNovyxothbFVuMUbNtrsVvMTmdccz_OyOY8XryALSksLRHVkiQG6YSVaU9KFBwAXxKDlQAAdROJanJlXjRHAADaMAau5nMuCMAAecAG_kADaaAS7sWoB8dXasMAcHIdQAbyoA0ZUA0bGAfqVSCFwjqkulyFFwXikFwAEaBkNhuyAU3NAAl2A0AGEqAfC0EIAdgMAlEotdmAWjlACFugHxXQCABoB650AwRqAXflACVGgBQPQBuXr4ACKFBC9wC_aoBn90agHJNQBm2pE0kdi27_RJvXxQzEhIxCIGYCez2Uq3AAMpwEDe30ls98cRv_AAC8fT2akf39P87wAdUYfBiAgK9_HLVBPVwfxwIUK0SytJUzzgVAUNEe1v1Pf04BgODiEYGAwygIN8CQR8nwUOiGIABVQIh7xI5iAxAe0QP8IQYFQJBGNw3iymE0SkHfT8QL9ST_SEFDUBomIAGJQmCdDSOYrC9LxHCMIkP8YGAKpuNMwQRDEQhSHtWAoGAJByDqQyz2cGAJBgRgy09OBan8AAeAhHAkJAP29LwACJILgLV0Fg-DQ2Q1DKAsmBiCILVkLgfDgD6EZ7SDGKAD5_AkABqCRHJgZykF8bEEEIZzGGqmJguMMKKpKJTFDqhqEDMgBRKAhAgfgbKdez8EDYA3MU_qyi88pPS4dqfDmxhgAQZx1sYPrlpWlxBDm2ptt2pgKL8gA5NqECIIR1s0JBSH8eE3IAfhiABrYAACbKrDABSfwjuOhRfP8wKqp8AADEzJNC_Bwsi-TYoIJB7U9KAQD6PhvSDSgoE9ODCC1S6kD6G872ojLYGywg-kmEqJHicqkeW4LsagSR0eimKsZxvG-iIMnCEYXLPVQIRfsodANDgCA-n2ErKAgZKENV-J1fLcbfuIETBFwPoABIZEuhAVJlmAbUypmtQolKipK8qut5wgyq5_qLat678DutqrQGHnHP5qLGFi-LEq11KUNwBmspyi9Q2K0qyot_aNqtCQLbOuArQ98PvY87nutR0vIcUeGIaUq19DL5lfLgLgYEkaGuACuuzwM3uJOZb0qMIU33MkypqgGAB5csACtGBEBBfsYEA3onqByAHp98OIiQRneEzLoAcSgXf9i3vDgzfSOeOW-LXyAkDAliEy-_9YzDKNjReRMpalNTsM-wwYX14s7bWMRxjAJ9hIHeYZYixCgU3PEms4LgP8JMEYYNX4gOZH_SSACYhAKYv1MBiFIHEKUrAmI6RMEUMkigl2qRaGvxLEyf0QYACC9FqZ-F_tAj8AkwxCCqIwYgakQB0N4uvAYbgPA4KfF_XAABJEewYBgHyQWUViSBMBQHLIwT0t9q5cWovtdR8jJL30fgMZ-0CP7HW0ZgIgCloFlAlowOSX4x7VzxDbNSYYNKTCCbpHxEg379XCU-exvE8G8QEYJYRgYxEwAkRY_00jXDuBgEgNJzJFEqM0EGGxuS8SOL0QYoxkMTEwDMezEpv5_wP2AjYl-mjFDRP6o45xlTjruM8S4tpzE_HqX8IE4Jrj2l2JYYZNhzIQBcIYj_JBsTmLxLDNnRgkjmKtQ4GGHoUh_oAyLPUxQ-TVFFLqdAnZjAWBX36T05ajlcAEBILydE7zoiTGxHYk5LFuG6P0YY7x1czIWXytRMMMgNlWhCctDpSlsZkzgE4yWDz-ooAwAMciG1fl4j6TfYFoSYH8UEpUFAjA0ITMwlMpB8KzwrO3iS9ZpMNpbKfNcsMgA_N0AGBKhIpAg2OdAs5hTilXLarckM9zCXHSeS84gbzogfIkF8y0gywm4rKYCtFSlQWWQhTEKFLLGBWiwWqulvFEVzRRQM0JGL0ADD4KTJgNLJKRLKLMvE68ABaBFCq8OWfwplMQkBk00A-XFdqsUwBxdAzh3CClqLeN8D1klIqqHMdA28o99gaOOnlAqYZaG4oYeAwIIxplnhTYoAOfklmSVMBIHogBvn0AOhKRoJCAG45QAf2p8LVRymILRuRsrwkGpCsBh3pKqFAAY68AiDq6L0KtzE40MQTRc3Ny15nxvORmtVl0pUMsksMgJIxDjxDAJkH50D9YwCgkrFWTDEF5tgCfXe_h4jALKA2wAsHKABgVVtgBH80AAragAX1MALux17YBgBEckkAr64EfpSBIBtv7AAAcoAbx9ADUSsBkDmbgD2mgEgRZ0rlr7oJYe5aKA8AYAAELrXUufKlpZoC4AwFPPgfAmBwAABq7qJdWljGAwCqRGVlfWpAlXvM-EWJjbreJyeZOa3BYrdkDuhHCXouK1kxBvRO5kGTZ2QlhPCJdT4V1IDXXxzdCyLM7suXu-aB6mPHs0iNEa6QPOXrNbim9d7cDKzgUWyDMB4MxEQ9ERQP7_0tpwxBtVN7oNJPEaF7In7kNmDQ1hnDeGCNQCIzwijzEyPyW1cdKjrH0B0bbjYjd_HytsY41x3j9n-MKHq-gYTtswxiagBJxV_X2bSdhdXBTUTsG9uOv21UnIh1adHbp3FBmp0BDVEO0zZ5zOWZa9Z7dIrtv9WK14wrT4XOjOCIEMAYAwgjGG_XHzsA_MBcfXpvEN6Uvha_WYP9gHQNxefTARLojkunwQ2llDGHsOgZy4R4jx2zyHZta19rVWGO1aJe19jnHmDNbR7awTHWRPdeIOJyTiqhuyZdfJkpDaeWElbe2wA9ko9oDX2tqYZrj3GeC958o73Hc8UEt6oAQOcan8Ot9hNmtuBFxVu1ddnpfQKQCAYAaUhH4BgM9TZEbldpSaSBMCDmdpObVVJQnmkABiHCwDjBGOMW7rrcX4pKyR_qit_MPsmJT_SJS4eKCm9yYkc3BExD54tqdM7luXAXcScXzJNvy5l5LhPiudcoTDAQZy4g0La5VyhPXAwDfHQR6V3ip2NJhEmGAeIS4Rr26p9Ap3R2mNu6e9MJj2n_CsfBZSs142WeTbZzENUoug-CVD9AwXUAVuclF7HvE8e9sK7VbL2zi-c-q5iORfAfNiDen5211Pnp8-mlxcXl3Sky-TBoxw2I_I6_e4b8443oSW8e9xTz4Pne8uax78dUbZRRtVUADbQ3RlBoB4BkBmAp5HQ7JSAHQZpG4cI95EgqAgA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    myChart.showLoading();
+
+setTimeout(function () {
+    myChart.hideLoading();
+    
+    // 准备数据
+    var years = ['1997', '2001', '2006', '2011', '2016'];
+    var data = {
+        '油田湿地面积': [745.83, 809.39, 888.84, 968.29, 1047.74],
+        '湿地自然增长率': [0, 8.5, 19.2, 29.8, 40.5],
+        '油田占用面积': [20, 84, 160, 160, 160],
+        '湿地面积比': [2.7, 10.4, 18, 16.5, 15.4],
+        '开发后湿地面积': [725.83, 725.39, 728.84, 808.29, 889.74],
+        '开发后增长率': [-2.7, -2.7, -2.3, 8.4, 16]
+    };
+
+    option = {
+        title: {
+            text: '新滩油田土地占用与湿地变化趋势(1997-2016)',
+            subtext: '数据来源: 刘娟.胜利油田开发中的生态环境保护研究[D].中国石油大学,2007.',
+            left: 'center',
+            textStyle: {
+                fontSize: 18,
+                fontWeight: 'bold'
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            },
+            formatter: function(params) {
+                var result = '<div style="font-weight:bold;margin-bottom:5px">' + params[0].name + '</div>';
+                params.forEach(function(item) {
+                    var value = item.value;
+                    var unit = item.seriesName.includes('面积') ? 'km²' : '%';
+                    result += `
+                        <div style="display:flex;align-items:center;margin:3px 0">
+                            <span style="display:inline-block;width:10px;height:10px;background:${item.color};margin-right:5px"></span>
+                            ${item.seriesName}: <span style="font-weight:bold;margin-left:5px">${value} ${unit}</span>
+                        </div>
+                    `;
+                });
+                return result;
+            }
+        },
+        legend: {
+            data: Object.keys(data),
+            top: 50,
+            itemGap: 10,
+            textStyle: {
+                fontSize: 12
+            }
+        },
+        grid: [
+            {
+                left: '10%',
+                right: '8%',
+                top: '22%',
+                height: '35%'
+            },
+            {
+                left: '10%',
+                right: '8%',
+                top: '65%',
+                height: '25%'
+            }
+        ],
+        xAxis: [
+            {
+                type: 'category',
+                data: years,
+                gridIndex: 0,
+                axisLabel: {
+                    interval: 0,
+                    fontSize: 12
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#333'
+                    }
+                }
+            },
+            {
+                type: 'category',
+                data: years,
+                gridIndex: 1,
+                axisLabel: {
+                    interval: 0,
+                    fontSize: 12
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#333'
+                    }
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '面积 (km²)',
+                gridIndex: 0,
+                nameTextStyle: {
+                    padding: [0, 0, 0, 30]
+                },
+                axisLabel: {
+                    formatter: '{value}'
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                }
+            },
+            {
+                type: 'value',
+                name: '百分比 (%)',
+                gridIndex: 1,
+                nameTextStyle: {
+                    padding: [0, 0, 0, 30]
+                },
+                axisLabel: {
+                    formatter: '{value}%'
+                },
+                splitLine: {
+                    show: false
+                }
+            }
+        ],
+        dataZoom: [
+            {
+                type: 'slider',
+                show: true,
+                xAxisIndex: [0, 1],
+                start: 0,
+                end: 100,
+                bottom: '5%',
+                height: 15
+            }
+        ],
+        series: [
+            // 面积系列 - 主图
+            {
+                name: '油田湿地面积',
+                type: 'bar',
+                data: data['油田湿地面积'],
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                itemStyle: {
+                    color: '#5470C6'
+                },
+                barWidth: '25%',
+                barGap: '0%',    // 不同系列柱子间距
+                barCategoryGap: '20%',  // 同一类别柱子间
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '油田占用面积',
+                type: 'bar',
+                data: data['油田占用面积'],
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                itemStyle: {
+                    color: '#EE6666'
+                },
+                barWidth: '25%',
+                barGap: '0%',    // 不同系列柱子间距
+                barCategoryGap: '20%',  // 同一类别柱子间
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                name: '开发后湿地面积',
+                type: 'bar',
+                data: data['开发后湿地面积'],
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                itemStyle: {
+                    color: '#91CC75'
+                },
+                barWidth: '25%',
+                barGap: '0%',    // 不同系列柱子间距
+                barCategoryGap: '20%',  // 同一类别柱子间
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            // 百分比系列 - 副图
+            {
+                name: '湿地自然增长率',
+                type: 'line',
+                data: data['湿地自然增长率'],
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbol: 'circle',
+                symbolSize: 8,
+                itemStyle: {
+                    color: '#FAC858'
+                },
+                lineStyle: {
+                    width: 3
+                }
+            },
+            {
+                name: '湿地面积比',
+                type: 'line',
+                data: data['湿地面积比'],
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbol: 'diamond',
+                symbolSize: 8,
+                itemStyle: {
+                    color: '#73C0DE'
+                },
+                lineStyle: {
+                    width: 3,
+                    type: 'dotted'
+                }
+            },
+            {
+                name: '开发后增长率',
+                type: 'line',
+                data: data['开发后增长率'],
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                symbol: 'triangle',
+                symbolSize: 8,
+                itemStyle: {
+                    color: '#3BA272'
+                },
+                lineStyle: {
+                    width: 3,
+                    type: 'dashed'
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+}, 500);
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
