@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>山东省各城市PM2.5变化趋势</title>
+    <!-- 更换为稳定的ECharts CDN链接 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <style>
+        #main {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        // 从Excel表中提取的原始数据（已转换为JavaScript对象）
+        const cityData = [
+            { name: '滨州市', rate: 0.5064, avg: 54.9, score: 30.1 },
+            { name: '德州市', rate: 0.5767, avg: 61.8, score: 36.7 },
+            { name: '东营市', rate: 0.5909, avg: 51.6, score: 20.7 },
+            { name: '菏泽市', rate: 0.4528, avg: 65.9, score: 15 },
+            { name: '济南市', rate: 0.5729, avg: 58.9, score: 49.8 },
+            { name: '济宁市', rate: 0.4192, avg: 58.1, score: 49.1 },
+            { name: '聊城市', rate: 0.5406, avg: 66.3, score: 15 },
+            { name: '临沂市', rate: 0.3902, avg: 54.9, score: 15 },
+            { name: '青岛市', rate: 0.3843, avg: 36.3, score: 60.7 },
+            { name: '日照市', rate: 0.4165, avg: 43.8, score: 32.6 },
+            { name: '泰安市', rate: 0.3362, avg: 52.8, score: 15 },
+            { name: '威海市', rate: 0.4026, avg: 27.2, score: 45.3 },
+            { name: '潍坊市', rate: 0.4840, avg: 52.8, score: 36.6 },
+            { name: '烟台市', rate: 0.3512, avg: 31.7, score: 48.3 },
+            { name: '枣庄市', rate: 0.4424, avg: 60.4, score: 34.2 },
+            { name: '淄博市', rate: 0.5371, avg: 58.8, score: 42.9 }
+        ];
+
+        // 生成年份数据：2015-2025（共11年）
+        const years = [];
+        for (let year = 2015; year <= 2025; year++) {
+            years.push(year);
+        }
+
+        // 生成各城市PM2.5数据（优化算法，确保起始值合理性）
+        const generateSeriesData = () => {
+            const series = [];
+            
+            cityData.forEach(city => {
+                // 基于十年平均PM2.5和下降率计算趋势
+                // 2015年值 = 十年平均值 / (1 - 下降率/2) （更符合实际趋势）
+                const startValue = city.avg / (1 - city.rate / 2);
+                const endValue = startValue * (1 - city.rate);
+                
+                // 生成每年数据（线性变化）
+                const data = [];
+                for (let i = 0; i < years.length; i++) {
+                    const progress = i / (years.length - 1);
+                    const value = startValue * (1 - progress) + endValue * progress;
+                    data.push(Number(value.toFixed(1)));
+                }
+                
+                series.push({
+                    name: city.name,
+                    type: 'line',
+                    data: data,
+                    // 为每个系列添加标记点，突出关键年份
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    },
+                    // 添加平滑曲线效果
+                    smooth: true
+                });
+            });
+            
+            return series;
+        };
+
+        // 初始化图表
+        const chartDom = document.getElementById('main');
+        if (chartDom) { // 添加DOM存在性检查
+            const myChart = echarts.init(chartDom);
+            
+            // 提取城市名称用于图例
+            const legendData = cityData.map(city => city.name);
+            
+            // 配置项（增强可视化效果）
+            const option = {
+                title: {
+                    text: '山东省各城市PM2.5年均含量变化趋势 (2015-2025)',
+                    subtext: '数据来源：PM2.5下降率统计',
+                    left: 'center',
+                    textStyle: {
+                        color: '#333',
+                        fontWeight: 'bold'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    },
+                    backgroundColor: 'rgba(255,255,255,0.8)',
+                    textStyle: { color: '#333' },
+                    borderColor: '#ddd',
+                    borderWidth: 1,
+                    padding: 10
+                },
+                legend: {
+                    data: legendData,
+                    type: 'scroll',
+                    bottom: 10,
+                    orient: 'horizontal',
+                    pageIconColor: '#666',
+                    pageIconInactiveColor: '#ccc'
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '15%',
+                    containLabel: true,
+                    borderColor: '#eee'
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {
+                            name: 'PM2.5变化趋势图',
+                            pixelRatio: 2
+                        },
+                        dataView: {},
+                        restore: {}
+                    },
+                    itemGap: 10,
+                    itemSize: 20,
+                    color: ['#3398DB']
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: years,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    axisTick: {
+                        show: true,
+                        length: 5,
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#666'
+                        },
+                        rotate: 45 // 防止年份标签重叠
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: 'PM2.5浓度 (μg/m³)',
+                    min: 0, // 强制Y轴从0开始
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    axisTick: {
+                        show: true,
+                        length: 5,
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#666'
+                        },
+                        formatter: '{value} μg/m³'
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#eee',
+                            type: 'dashed'
+                        }
+                    }
+                },
+                series: generateSeriesData()
+            };
+
+            myChart.setOption(option);
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        } else {
+            console.error('未找到图表容器元素');
+        }
+    </script>
+</body>
+</html>
