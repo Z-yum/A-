@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>山东省油田生态治理政策标杆地图</title>
+    <style>
+        body, html, #map {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+        .info-window {
+            width: 250px;
+            padding: 10px;
+        }
+        .info-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1E90FF;
+        }
+        .info-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .info-item {
+            margin-bottom: 8px;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <!-- 引用百度地图API v2.0版本 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GZvWZa8BE3zEGk0XIcaEKSYwW2Yu2f84"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+            createMap();
+            setMapEvent();
+            addMapControl();
+            addMapOverlay();
+        }
+
+        function createMap() {
+            map = new BMap.Map("map");
+            map.centerAndZoom("山东省", 7);
+        }
+
+        function setMapEvent() {
+            map.enableScrollWheelZoom(true);
+            map.enableKeyboard();
+            map.enableDragging();
+            map.enableDoubleClickZoom();
+        }
+
+        function addMapControl() {
+            var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+            scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+            map.addControl(scaleControl);
+
+            var navControl = new BMap.NavigationControl({
+                anchor: BMAP_ANCHOR_TOP_LEFT,
+                type: BMAP_NAVIGATION_CONTROL_LARGE
+            });
+            map.addControl(navControl);
+
+            var overviewControl = new BMap.OverviewMapControl({
+                anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                isOpen: true
+            });
+            map.addControl(overviewControl);
+        }
+
+        var cityCoordinates = {
+            "东营市": [118.674767, 37.434751],
+            "滨州市": [117.970703, 37.38199],
+            "潍坊市": [119.107078, 36.70925],
+            "淄博市": [118.047648, 36.814939],
+            "烟台市": [121.391382, 37.539297]
+        };
+
+        var policyData = [
+            {
+                city: "东营市",
+                project: "绿色油田建设三年行动",
+                period: "2016-2020",
+                before: ["井场占地破坏植被", "采油废水外排超标率12%", "土壤石油烃污染点位占比18%"],
+                after: ["井场复垦率100%", "废水回用率98%", "土壤污染点位下降至3%"],
+                feature: "全国首个油田污染地块风险管控标准"
+            },
+            {
+                city: "东营市",
+                project: "滨海湿地与油气开采协同修复工程",
+                period: "2018-2022",
+                before: ["滩涂油污面积超200公顷", "潮间带生物减少40%"],
+                after: ["修复湿地450公顷", "生物多样性恢复至原生状态85%"],
+                feature: "油井+湿地生态共生模式"
+            },
+            {
+                city: "滨州市",
+                project: "碳汇林建设与油田减排一体化项目",
+                period: "2019-2023",
+                before: ["油田碳排放强度1.2吨/吨原油", "周边植被覆盖率＜20%"],
+                after: ["建成碳汇林1.5万亩", "碳排放强度降至0.8吨/吨原油"],
+                feature: "全国首个油田CCUS（碳捕集）示范项目"
+            },
+            {
+                city: "潍坊市",
+                project: "盐碱地油田生态农场转型计划",
+                period: "2020-2024",
+                before: ["盐碱化井场废弃率30%", "土地利用率不足50%"],
+                after: ["改造生态农场8000亩", "年产值超2000万元"],
+                feature: "井场变农田循环农业模式"
+            },
+            {
+                city: "淄博市",
+                project: "黄河沿岸油田环境风险防控体系",
+                period: "2017-2021",
+                before: ["距黄河干流最近仅500米", "环境风险隐患点56处"],
+                after: ["建成三级应急拦截体系", "风险隐患清零"],
+                feature: "黄河流域清废行动标杆"
+            },
+            {
+                city: "东营市",
+                project: "油田区历史污染地块修复工程",
+                period: "2015-2019",
+                before: ["遗留油泥存量12万吨", "地下水苯系物超标15倍"],
+                after: ["修复污染土壤45万方", "地下水达标率100%"],
+                feature: "国内最大规模油田污染场地修复项目"
+            },
+            {
+                city: "烟台市",
+                project: "海洋油气开发零排放技术推广",
+                period: "2021-2025",
+                before: ["钻井岩屑入海率100%", "平台油气挥发损失率3%"],
+                after: ["岩屑回注利用率100%", "挥发损失率＜0.5%"],
+                feature: "国际领先的海上油田清洁生产技术"
+            }
+        ];
+
+        // 添加地图覆盖物（标记点、信息窗口和行政区划线）
+        function addMapOverlay() {
+            // 绘制市级行政区划线
+            const cities = [
+                "济南市", "青岛市", "淄博市", "枣庄市", "东营市", 
+                "烟台市", "潍坊市", "济宁市", "泰安市", "威海市", 
+                "日照市", "临沂市", "德州市", "聊城市", "滨州市", "菏泽市"
+            ];
+            
+            cities.forEach(city => {
+                const bdary = new BMap.Boundary();
+                bdary.get(city, function(rs) {
+                    if (rs.boundaries && rs.boundaries.length > 0) {
+                        // 绘制行政区边界线
+                        for (let i = 0; i < rs.boundaries.length; i++) {
+                            const ply = new BMap.Polygon(rs.boundaries[i], {
+                                strokeWeight: 1,
+                                strokeColor: "#C5A4CC",
+                                strokeOpacity: 1,
+                                strokeStyle: "solid",
+                                fillColor: "",
+                                enableMassClear: false
+                            });
+                            map.addOverlay(ply);
+                        }
+                    }
+                });
+            });
+
+            // 原有政策标记点代码
+            policyData.forEach(function(item, index) {
+                // 基础坐标
+                var [lng, lat] = cityCoordinates[item.city];
+                
+                // 自定义偏移量
+                let offsetLng = 0, offsetLat = 0;
+                switch(index) {
+                    case 0: // A图标
+                        offsetLng = -0.15;
+                        offsetLat = 0.1;
+                        break;
+                    case 1: // B图标
+                        offsetLng = 0.1;
+                        offsetLat = 0.1;
+                        break;
+                    case 5: // F图标
+                        offsetLng = 0;
+                        offsetLat = -0.1;
+                        break;
+                    default:
+                        break;
+                }
+                
+                // 计算最终坐标
+                var point = new BMap.Point(lng + offsetLng, lat + offsetLat);
+
+                // 创建图标
+                var icon = new BMap.Icon(
+                    "http://api.map.baidu.com/images/markers.png",
+                    new BMap.Size(23, 25),
+                    {
+                        offset: new BMap.Size(10, 25),
+                        imageOffset: new BMap.Size(0, 0 - index * 25)
+                    }
+                );
+
+                // 创建标记
+                var marker = new BMap.Marker(point, { icon: icon });
+                
+                // 创建信息窗口内容
+                var content = `
+                    <div class="info-window">
+                        <div class="info-title">${item.project}</div>
+                        <div class="info-content">
+                            <div class="info-item"><span class="info-label">地区:</span> ${item.city}</div>
+                            <div class="info-item"><span class="info-label">实施年份:</span> ${item.period}</div>
+                            <div class="info-item"><span class="info-label">治理前:</span><ul>
+                                ${item.before.map(b => `<li>${b}</li>`).join('')}
+                            </ul></div>
+                            <div class="info-item"><span class="info-label">治理后:</span><ul>
+                                ${item.after.map(a => `<li>${a}</li>`).join('')}
+                            </ul></div>
+                            <div class="info-item"><span class="info-label">治理特色:</span> ${item.feature}</div>
+                        </div>
+                    </div>
+                `;
+
+                // 创建信息窗口对象
+                var infoWindow = new BMap.InfoWindow(content, {
+                    width: 250,
+                    title: item.project,
+                    enableMessage: false
+                });
+
+                // 绑定点击事件
+                marker.addEventListener("click", (function(marker, point, infoWindow) {
+                    return function() {
+                        map.openInfoWindow(infoWindow, point);
+                    };
+                })(marker, point, infoWindow));
+
+                // 添加标记到地图
+                map.addOverlay(marker);
+            });
+
+            // 添加山东省边界（保持原有代码）
+            var bdary = new BMap.Boundary();
+            bdary.get("山东省", function(rs) {
+                var count = rs.boundaries.length;
+                for (var i = 0; i < count; i++) {
+                    var ply = new BMap.Polygon(rs.boundaries[i], {
+                        strokeWeight: 2,
+                        strokeColor: "#0066ff",
+                        fillColor: "#0066ff",
+                        fillOpacity: 0.05
+                    });
+                    map.addOverlay(ply);
+                }
+            });
+        }
+
+        initMap();
+    </script>
+</body>
+</html>
